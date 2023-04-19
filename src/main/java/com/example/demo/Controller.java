@@ -13,7 +13,7 @@ import java.util.List;
 public class Controller {
 
     Jdbc jdbc = new Jdbc();
-    List signale = new ArrayList<Signal>;
+    List signale = new ArrayList<Signal>();
      @PostMapping
     public void insertIntoDatabase(boolean signal){
          jdbc.insertIntoDatabase(signal);
