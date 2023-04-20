@@ -22,12 +22,17 @@ public class Jdbc {
                 uuid, signal, LocalDate.now());
         ids.add(uuid);
     }
-    public ArrayList<Signal> getFromDatabase(){
+    public boolean getFromDatabase(){
         for(int i = 0; i<ids.size(); i++){
             var query = "SELECT * FROM Signal WHERE id='" + ids.get(i) + "'";
             signale.add(jdbcTemplate.queryForObject(query, Signal.class));
         }
-        return signale;
+        for(int i = 0; i<=signale.size(); i++){
+            if(signale.get(i).isSignal()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void deleteStuff(){

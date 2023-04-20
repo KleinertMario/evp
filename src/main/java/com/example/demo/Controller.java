@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,16 +13,14 @@ import java.util.List;
 @Component
 public class Controller {
 
+    @Autowired
     Jdbc jdbc = new Jdbc();
-    List signale = new ArrayList<Signal>();
      @PostMapping
     public void insertIntoDatabase(boolean signal){
          jdbc.insertIntoDatabase(signal);
      }
      @GetMapping
-    public List getSignale(){
-          signale = jdbc.getFromDatabase();
-          jdbc.deleteStuff();
-          return signale;
+    public boolean getSignale(){
+          return jdbc.getFromDatabase();
      }
 }
